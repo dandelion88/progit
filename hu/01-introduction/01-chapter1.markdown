@@ -2,42 +2,42 @@
 
 Ez a fejezet a Git használatba vételének első lépéseit mutatja be. Először megismerkedünk a verziókövető eszközök hátterével, majd futatásra kész állapotba hozzuk a Git-et a saját rendszerünkön és végezetül munkára kész állapotba hozzuk. A fejezet végére megértjük miért is van szükségünk a Git-re, miért kellene használni és miért kell elvégezni minden beállítást.
 
-## A verziókövetésről ##
+## A verziókezelésről ##
 
-Mi az a verziókövetés, és miért kellene vele törődnünk? A verziókövető rendszer nyílvántartja egy file vagy fájlok gyűjteményén időről-időre végzett módosításokat és bármelyik verzióhoz hozzáférhetünk a segítségével. A könyvben szereplő példában egy program forráskódot verziókövetünk, a való világban szinte bármilyen a számítógépen található fájlal meg tehető.
+Mi az a "verziókezelés", és miért kellene vele törődnünk? A verziókezelő rendszer nyílvántartja egy file vagy fájlok gyűjteményén időről-időre végzett módosításokat és bármelyik verzióhoz hozzáférhetünk a segítségével. A könyvben szereplő példában egy forráskódot verziókezelünk, a való világban ez szinte bármilyen, a számítógépen található fájllal megtehető.
 
-Ha grafikus vagy webdizájner vagy és meg akarod tartani az összes verzióját egy képnek vagy egy weboldal tervezetnek (amit mindenképp szeretnél), egy Verziókövető Rendszer (VR) legalkalmasabb dolog a feladatra. Lehetővé teszi fájlok visszaálítást egy előző verzióra, a teljes projekt visszaállítását egy előző verzióra, változatok összehasonlítását bármely idő intervalimra, rájöhetsz miért okoz az utolsó módsításod problémát, hogyan keletkezik egy esemény és miért és így tovább. A VR használata az is jelenti ha elrontasz valamit vagy elveszne egy fájl könnyedén visszavonhatod minimális erőforrás ráfordítással.
+Ha grafikus vagy webdizájner vagy és meg akarod tartani az összes verzióját egy képnek vagy egy weboldal-tervezetnek (amit bizonyára szeretnél), egy Verziókezelő Rendszer (VCS) a legalkalmasabb dolog a feladatra. Lehetővé teszi fájlok visszaállítását egy előző verzióra, a teljes projekt visszaállítását egy előző verzióra, változatok összehasonlítását bármely időpontra, megnézheted, kinek a módosítása okoz eg bizonyos problémát, ki és mikor vetett fel egy kérdést és így tovább. A VCS használata egyúttal azt is jelenti, hogy ha elrontasz valamit vagy elveszne egy fájlod, könnyedén visszavonhatod minimális erőforrás-ráfordítással.
 
-### Lokális verziókövető rendszerek  ###
+### Lokális verziókezelő rendszerek  ###
 
-Sok ember választja verziókövető megoldásnak a fájlok különböző mappákba másolását (mappák neve egy időbélyeg ha értelmesen csinálják). Ez a legkönnyebben befogadható megoldás mert egyszerű, de hihetetlenül könnyű hibázni. Elfelejtik hogy melyik mappában vannak rossz fájlt írnak vagy írnakfelül olyat amit nem kellett volna.
+Sok ember választja verziókezelő megoldásnak a fájlok különböző mappákba másolását (mappák neve egy időbélyeg ha értelmesen csinálják). Ez egy nagyon elterjedt megoldás, mert egyszerű, de egyúttal hihetetlenül sérülékeny is. Könnyú elfelejteni, hogy melyik mappában vagyunk, rossz fájlt írunk, vagy felülírunk olyat, amit nem kellett volna.
 
-Régebben a probléma megoldására a programozók egyéni VR-eket fejlesztettek, aminek volt egy egyszerű adatbázisa amiben követte a fájlok egyes verzióit (Lásd 1-1 ábra).
+Régebben a probléma megoldására a programozók egyéni VCS-eket fejlesztettek, amelyek egy egyszerű adatbázisban követték a fájlok egyes verzióit.
 
 Insert 18333fig0101.png
-1-1 ábra. Lokális verziókövetés sematikus ábrája.
+1-1 ábra. Lokális verziókezelés sematikus ábrája.
 
-Az egyik legnépszerűbb VR a sok közül az rcs, ami még mindig sok számítógépen megtalálható. A népszerű Mac OS X operációs rendszer is tartalmazza, ha feltelpítjük a Fejlesztő Eszközöket. Ez az eszköz egyszerűen folt (patch) készleteket (a fájlok verziók közötti különbségégek összesége) tárol minden egyes változás egy speciális formátumban a merevlemezen; a fájlok bármely állapotra visszaállíthatóak a foltok segítségével.
+Az egyik legnépszerűbb VCS eszköz az RCS, ami még mindig sok számítógépen megtalálható. Még a népszerű Mac OS X operációs rendszer is tartalmazza az rcs parancsot, ha feltelepítjük a Fejlesztő Eszközöket. Az RCS patch-csomagokat (a fájlok közötti különbségégeket) tárol speciális formátumban a merevlemezen; a fájlok bármely állapotra visszaállíthatók az összes patch alkalmazásával.
 
-### Központosított verziókövető rendszerek ###
+### Központosított verziókezelő rendszerek ###
 
-Az embereknek szembesülnie kellet azzal a problémával, hogy együtt kell működniük más fejesztőkkel akik más-más rendszereket használták. A probléma megoldását a központosított verzióküvető rendszerek (KVR) kifejlesztése kívánta meg. Ezek a rendszerek, úgymint a CVS, a Subversion (SVN) és a Prefoce, egy darab központi szerveren tárolják az összes verziókövetett fájlt, a kliensek pedig ebből a központi tárolóból kérik le azokat. Sok évig ezt jelentette "A verziókövetést" (Lásd 1-2 ábra).
+Az emberek egy idő után szembesültek azzal a problémával, hogy együtt kell működniük más fejesztőkkel akik más-más rendszereket használták. A probléma megoldására születtek meg a központosított verziókezelő rendszerek (CVS-ek). Ezek a rendszerek, mint a CVS, a Subversion (SVN) és a Perforce, egy központi szerveren tárolják az összes verziózott fájlt, a kliensek pedig ebből a központi tárolóból kérik le azokat. Hosszú évekig ez volt a verziókezelés szabványa.
 
 Insert 18333fig0102.png
-1-2 ábra. Központi verziókövetés sematikus ábrája.
+1-2 ábra. Központosított verziókezelés
 
-Ez az összeállítás rengeteg előnnyel rendelkezett, különös képpen az egyéni VR-kel szemben. Példának okáért, mindenki pontosan tudta ki mit csinál a projekten belül. Az adminisztrátorok teljes körüen irányítusk alatt tarthatják ki, mit és hogyan tehet meg; nagyságrendekkel könnyebb adminisztrálni egy KVR-t mint ha az összes kliens lokális adatbázisait kellene.
+Enek a megoldásnak rengeteg előnye van, különösen a lokális VCS-ekkel szemben. Például bizonyos mértékig mindenki tudhatja, hogy ki mit csinál a projekten belül. Az adminisztrátorok finoman hangolhatják, hogy ki, mit és hogyan csinálhat; és sokkal könnyebb adminisztrálni egy CVS-t, mint a klienseken lévő lokális adatbázisokat.
 
-Ugyanakkor ez az összeállításnak van néhány komoly hátránya. A legnyílvánvalóbb "single point of faliure"-t a központi szerver jelenti. Ha a szerver nem működik egy órán keresztül, akkor senki sem tud együttműködni vagy verziókövetni a változásait amin éppen dolgozott. Ha a központi szerver lemezen adatvesztés lép fel és nincs megfelelő mentésróla, mindent elveszíthetsz a projekt teljes történetét kivéve persze az egyes emberek egyéni másolatait ami a saját gépeiken található. Az egyéni VR rendszereket is veszélyezteti ez a veszély mivel mindent lokálisan egyetlen helyen tárolnak, megvan a veszélye hogy mindent elvíthetsz.
+Ugyanakkor ennek a megoldásnak van néhány komoly hátránya. A legnyilvánvalóbb a "single point of faliure", amit a központi szerver jelent. Ha a szerver egy órára leáll, akkor ez idő alatt sem a csoportmunkára, sem a módosítások verziózott mentésére nincs lehetőség. Ha a központi szerver lemeze megsérül és nincs megfelelő mentés róla, elveszik a projekt teljes története, hacsak az egyes fejlesztők saját gépei nincsenek másolatok róla. A lokális VCS rendszereket ugyanez a veszély fenyegeti - ha mindent egy helyen tárolsz, kockáztatod, hogy mindent elveszítesz.
 
 ### Elosztott verziókövető rendszerek ###
 
-Ekkor jöttek az Elosztott Verziókövető Rendszerek (EVR). Az EVR-ekben, mint a Git, a Mercurical, a Bazaar vagy a Dracs, a kliensek nem csak a legutolsó állapotot kérik le, hanem a teljes repositorit. Ekéépen ha a szerver megáll, amin eddig folyt az együttműködés, bármelyik kliens repositoriból vissza állítható a teljes adatbázis. Minden adat lekérés tényleg teljes mentésnek felel meg (Lásd 1-3 ábra).
+Ekkor jelentek meg a színen az Elosztott Verziókezelő Rendszerek (DVCS-ek). A DVCS-ekben (pl. a Git, a Mercurical, a Bazaar vagy a Dracs), a kliensek nem csak a fájlok utolsó állapotát kérik le, hanem a teljes repót. Így ha a csoportmunka-szerver leáll, akkor bármelyik kliens repóból visszaállítható a teljes adatbázis. Minden adatlekérés valójában egy teljes mentésnek felel meg.
 
 Insert 18333fig0103.png
-1-3 ábra. Elosztott verziókövetés sematikus ábrája.
+1-3 ábra. Elosztott verziókezelés
 
-Ezenkívül, a legtöbb ilyen rendszer támogatja a több távoli repositori elérését, így lehetővé válik számunkra hogy több különböző csoportokkal különböző módun tudjanak együtműködni ugyaz azon a projekt keretein belül. Így lehetőség van több munkafolyamat (workflow) alkamazására, ami egy centralizát hiearchiskus modelben elképzelhetetlen.
+Ráadásul a legtöbb ilyen rendszer támogatja a több távoli repó elérését, így egy projekten belül több különböző csoporttal tudunk együttműködni, különböző módon. Így lehetőség van különböző munkafolyamat-típusok használatára, ami centralizált rendszerekben, például egy hierarchikus modellben elképzelhetetlen.
 
 ## A Git rövid története ##
 
@@ -45,11 +45,11 @@ As with many great things in life, Git began with a bit of creative destruction 
 
 In 2005, the relationship between the community that developed the Linux kernel and the commercial company that developed BitKeeper broke down, and the tool’s free-of-charge status was revoked. This prompted the Linux development community (and in particular Linus Torvalds, the creator of Linux) to develop their own tool based on some of the lessons they learned while using BitKeeper. Some of the goals of the new system were as follows:
 
-*	Speed
-*	Simple design
-*	Strong support for non-linear development (thousands of parallel branches)
-*	Fully distributed
-*	Able to handle large projects like the Linux kernel efficiently (speed and data size)
+*	Sebesség
+*	Egyszerű dizájn
+*	A nem-lineáris programfejlesztés (több ezer párhuzamos ág) erős támogatása
+*	Teljesen elosztott
+*	Képes nagy projektek, mint pl. a Linux kernel hatékony támogatására (sebesség és adatmennyiség)
 
 Since its birth in 2005, Git has evolved and matured to be easy to use and yet retain these initial qualities. It’s incredibly fast, it’s very efficient with large projects, and it has an incredible branching system for non-linear development (See Chapter 3).
 
@@ -67,7 +67,7 @@ Figure 1-4. Other systems tend to store data as changes to a base version of eac
 Git doesn’t think of or store its data this way. Instead, Git thinks of its data more like a set of snapshots of a mini filesystem. Every time you commit, or save the state of your project in Git, it basically takes a picture of what all your files look like at that moment and stores a reference to that snapshot. To be efficient, if files have not changed, Git doesn’t store the file again—just a link to the previous identical file it has already stored. Git thinks about its data more like Figure 1-5. 
 
 Insert 18333fig0105.png 
-Figure 1-5. Git stores data as snapshots of the project over time.
+Ábra 1-5. Git stores data as snapshots of the project over time.
 
 This is an important distinction between Git and nearly all other VCSs. It makes Git reconsider almost every aspect of version control that most other systems copied from the previous generation. This makes Git more like a mini filesystem with some incredibly powerful tools built on top of it, rather than simply a VCS. We’ll explore some of the benefits you gain by thinking of your data this way when we cover Git branching in Chapter 3.
 
@@ -89,7 +89,7 @@ The mechanism that Git uses for this checksumming is called a SHA-1 hash. This i
 
 You will see these hash values all over the place in Git because it uses them so much. In fact, Git stores everything not by file name but in the Git database addressable by the hash value of its contents.
 
-### Git Generally Only Adds Data ###
+### A Git többnyire csak hozzáad adatokat ###
 
 When you do actions in Git, nearly all of them only add data to the Git database. It is very difficult to get the system to do anything that is not undoable or to make it erase data in any way. As in any VCS, you can lose or mess up changes you haven’t committed yet; but after you commit a snapshot into Git, it is very difficult to lose, especially if you regularly push your database to another repository.
 
@@ -237,7 +237,7 @@ You can also check what Git thinks a specific key’s value is by typing `git co
 	$ git config user.name
 	Scott Chacon
 
-## Getting Help ##
+## Segítségkérés ##
 
 If you ever need help while using Git, there are three ways to get the manual page (manpage) help for any of the Git commands:
 
